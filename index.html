@@ -141,7 +141,12 @@ cards.forEach(c=>obs.observe(c));
 
 const target = new Date("2027-01-01T00:00:00").getTime();
 
-document.getElementById("hours").innerText = 336;
+let hours = 336;
+
+setInterval(() => {
+  if (hours > 0) hours--;
+  document.getElementById("hours").innerText = hours;
+}, 60000);
 </script>
 
 
