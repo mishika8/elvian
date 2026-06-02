@@ -139,14 +139,16 @@ if(e.isIntersecting)e.target.classList.add('show');
 });
 cards.forEach(c=>obs.observe(c));
 
-const target = new Date("2027-01-01T00:00:00").getTime();
-
 let hours = 336;
 
+document.getElementById("hours").innerText = hours;
+
 setInterval(() => {
-  if (hours > 0) hours--;
-  document.getElementById("hours").innerText = hours;
-}, 60000);
+  if (hours > 0) {
+    hours--;
+    document.getElementById("hours").innerText = hours;
+  }
+}, 3600000);
 </script>
 
 
