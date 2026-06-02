@@ -1,23 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>ELVIAN Hackathon</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELVIAN</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#000;
+color:white;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.logo{
+font-size:90px;
+font-weight:800;
+letter-spacing:12px;
+margin-bottom:15px;
+}
+
+.tagline{
+font-size:22px;
+opacity:0.8;
+margin-bottom:20px;
+}
+
+.subtitle{
+max-width:700px;
+line-height:1.7;
+opacity:0.7;
+font-size:18px;
+}
+
+.btn{
+margin-top:40px;
+padding:15px 35px;
+background:white;
+color:black;
+text-decoration:none;
+font-weight:bold;
+border-radius:50px;
+transition:0.3s;
+}
+
+.section{
+padding:100px 10%;
+text-align:center;
+}
+
+.section h2{
+font-size:40px;
+margin-bottom:20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:50px;
+}
+
+.card{
+border:1px solid rgba(255,255,255,0.1);
+padding:30px;
+border-radius:20px;
+background:rgba(255,255,255,0.03);
+}
+
+footer{
+padding:50px;
+text-align:center;
+opacity:0.5;
+}
+</style>
 </head>
 
-<body style="margin:0;background:black;color:white;text-align:center;padding:80px;font-family:Arial;">
+<body>
 
-  <h1 style="font-size:60px;letter-spacing:5px;">ELVIAN</h1>
+<section class="hero">
 
-  <p style="font-size:20px;">Greater Noida Student Hackathon</p>
-  <p>Build • Innovate • Launch</p>
+<h1 class="logo">ELVIAN</h1>
 
-  <br>
+<p class="tagline">
+Build. Create. Connect.
+</p>
 
-  <a href="https://forms.gle/yourform"
-     style="background:white;color:black;padding:12px 20px;text-decoration:none;font-weight:bold;">
-     Join Waitlist
-  </a>
+<p class="subtitle">
+A next-generation hackathon experience for students, builders, creators, designers and innovators in Greater Noida.
+</p>
+
+<a href="#" class="btn">Coming Soon</a>
+
+</section>
+
+<section class="section">
+
+<h2>Not Just A Hackathon</h2>
+
+<p>
+ELVIAN combines innovation, networking, creativity and competition into one immersive experience designed for the next generation of builders.
+</p>
+
+<div class="cards">
+
+<div class="card">
+<h3>🏆 Cash Prizes</h3>
+<p>Compete for exciting rewards and recognition.</p>
+</div>
+
+<div class="card">
+<h3>🎮 Gaming Zone</h3>
+<p>PS5 gaming and fun break sessions throughout the event.</p>
+</div>
+
+<div class="card">
+<h3>🍕 Food & Refreshments</h3>
+<p>Stay energized while building and collaborating.</p>
+</div>
+
+<div class="card">
+<h3>📜 Certificates</h3>
+<p>Participation certificates for all attendees.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+ELVIAN © 2026
+</footer>
 
 </body>
 </html>
