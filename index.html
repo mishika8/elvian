@@ -29,9 +29,7 @@ section,footer{position:relative;z-index:2}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
 .logo{width:220px;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 25px rgba(139,92,246,.6))}
 @keyframes float{50%{transform:translateY(-14px)}}
-.title{text-shadow:
-0 0 20px rgba(139,92,246,.5),
-0 0 40px rgba(6,182,212,.3);
+.title{
 font-size:clamp(70px,12vw,180px);font-weight:900;
 background:linear-gradient(90deg,#fff,var(--purple),var(--cyan),#fff);
 background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
@@ -50,20 +48,12 @@ box-shadow:0 0 35px rgba(139,92,246,.4);transition:.3s}
 .cards{
 display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;margin-top:50px}
-.card{ position:relative;
-overflow:hidden;
+.card{
 background:var(--glass);backdrop-filter:blur(18px);
 border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:24px;
 transition:.35s;opacity:0;transform:translateY(40px)}
 .card.show{opacity:1;transform:translateY(0)}
-.card:hover{
-transform:
-translateY(-12px)
-rotateX(4deg)
-rotateY(-4deg);
-box-shadow:
-0 20px 50px rgba(139,92,246,.25);
-}
+.card:hover{transform:translateY(-10px)}
 .card h3{margin-bottom:12px}
 .countdown{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:40px}
 .time{
@@ -110,12 +100,11 @@ footer{text-align:center;padding:50px;color:var(--muted)}
 
 <section class="section">
 <h2>Something Big Is Coming</h2>
-
 <div class="countdown">
-  <div class="time">
-    <span id="hours">336</span>
-    Hours Left
-  </div>
+<div class="time"><span id="d">00</span>Days</div>
+<div class="time"><span id="h">00</span>Hours</div>
+<div class="time"><span id="m">00</span>Minutes</div>
+<div class="time"><span id="s">00</span>Seconds</div>
 </div>
 </section>
 
@@ -123,7 +112,7 @@ footer{text-align:center;padding:50px;color:var(--muted)}
 
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 <script>
-tsParticles.load("particles-js",{...});
+tsParticles.load("particles-js",{particles:{number:{value:70},color:{value:["#8b5cf6","#06b6d4"]},links:{enable:true,color:"#8b5cf6",opacity:.2},move:{enable:true,speed:1},size:{value:2}}});
 
 const glow=document.getElementById('glow');
 document.addEventListener('mousemove',e=>{
@@ -133,25 +122,19 @@ glow.style.top=e.clientY+'px';
 
 const cards=document.querySelectorAll('.card');
 const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting)e.target.classList.add('show');
-});
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
 });
 cards.forEach(c=>obs.observe(c));
 
-let hours = 336;
-
-document.getElementById("hours").innerText = hours;
-
-setInterval(() => {
-  if (hours > 0) {
-    hours--;
-    document.getElementById("hours").innerText = hours;
-  }
-}, 3600000);
+const target=new Date("2027-01-01T00:00:00").getTime();
+setInterval(()=>{
+const now=new Date().getTime();
+const diff=target-now;
+document.getElementById('d').innerText=Math.max(0,Math.floor(diff/86400000));
+document.getElementById('h').innerText=Math.max(0,Math.floor(diff%86400000/3600000));
+document.getElementById('m').innerText=Math.max(0,Math.floor(diff%3600000/60000));
+document.getElementById('s').innerText=Math.max(0,Math.floor(diff%60000/1000));
+},1000);
 </script>
-
-
 </body>
 </html>
-
