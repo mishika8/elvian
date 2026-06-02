@@ -113,8 +113,8 @@ footer{text-align:center;padding:50px;color:var(--muted)}
 
 <div class="countdown">
   <div class="time">
-    <span id="hours">000</span>
-    Total Hours Left
+    <span id="hours">336</span>
+    Hours Left
   </div>
 </div>
 </section>
@@ -141,14 +141,7 @@ cards.forEach(c=>obs.observe(c));
 
 const target = new Date("2027-01-01T00:00:00").getTime();
 
-setInterval(() => {
-  const now = new Date().getTime();
-  const diff = target - now;
-
-  const totalHours = Math.max(0, Math.floor(diff / (1000 * 60 * 60)));
-
-  document.getElementById("hours").innerText = totalHours;
-}, 1000);
+document.getElementById("hours").innerText = 336;
 </script>
 
 
