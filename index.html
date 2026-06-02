@@ -4,323 +4,138 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ELVIAN</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
 --bg:#050505;
---card:rgba(255,255,255,0.05);
 --purple:#8b5cf6;
---blue:#06b6d4;
---white:#ffffff;
---gray:#a1a1aa;
+--cyan:#06b6d4;
+--glass:rgba(255,255,255,.06);
+--text:#fff;
+--muted:#a1a1aa;
 }
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-   
-body{
-background:var(--bg);
-color:white;
-overflow-x:hidden;
-position:relative;
-}
-
-/* animated background */
-
-body::before{
-content:'';
-position:fixed;
-width:700px;
-height:700px;
-background:radial-gradient(circle,var(--purple),transparent 70%);
-top:-300px;
-left:-300px;
-opacity:.15;
-filter:blur(100px);
-animation:float1 10s ease-in-out infinite;
-}
-
-body::after{
-content:'';
-position:fixed;
-width:700px;
-height:700px;
-background:radial-gradient(circle,var(--blue),transparent 70%);
-bottom:-300px;
-right:-300px;
-opacity:.15;
-filter:blur(100px);
-animation:float2 12s ease-in-out infinite;
-}
-
-@keyframes float1{
-50%{
-transform:translate(100px,50px);
-}
-}
-
-@keyframes float2{
-50%{
-transform:translate(-100px,-50px);
-}
-}
-
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-position:relative;
-z-index:2;
-}
-.logo-img{
-    width:260px;
-    max-width:80%;
-    margin-bottom:20px;
-    animation:floatLogo 4s ease-in-out infinite;
-    filter:drop-shadow(0 0 25px rgba(139,92,246,0.6));
-}
-
-@keyframes floatLogo{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-12px);
-    }
-}
-.logo{
-font-size:clamp(70px,12vw,180px);
-font-weight:900;
-letter-spacing:8px;
-background:linear-gradient(
-90deg,
-#ffffff,
-#8b5cf6,
-#06b6d4,
-#ffffff
-);
-background-size:300% auto;
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:shine 5s linear infinite;
-}
-
-@keyframes shine{
-to{
-background-position:300% center;
-}
-}
-
-.tagline{
-margin-top:20px;
-font-size:26px;
-color:white;
-font-weight:600;
-}
-
-.subtitle{
-max-width:850px;
-margin-top:25px;
-color:var(--gray);
-font-size:20px;
-line-height:1.8;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:var(--bg);color:white;overflow-x:hidden}
+#glow{
+position:fixed;width:350px;height:350px;border-radius:50%;
+background:radial-gradient(circle,rgba(139,92,246,.22),transparent 70%);
+pointer-events:none;transform:translate(-50%,-50%);z-index:1}
+body::before,body::after{
+content:"";position:fixed;width:700px;height:700px;filter:blur(120px);opacity:.18;z-index:0}
+body::before{background:var(--purple);top:-250px;left:-250px}
+body::after{background:var(--cyan);right:-250px;bottom:-250px}
+#particles-js{position:fixed;inset:0;z-index:0}
+section,footer{position:relative;z-index:2}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
+.logo{width:220px;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 25px rgba(139,92,246,.6))}
+@keyframes float{50%{transform:translateY(-14px)}}
+.title{
+font-size:clamp(70px,12vw,180px);font-weight:900;
+background:linear-gradient(90deg,#fff,var(--purple),var(--cyan),#fff);
+background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:300% center}}
+.tag{font-size:28px;font-weight:700;margin-top:10px}
+.sub{max-width:850px;color:var(--muted);line-height:1.8;margin-top:20px;font-size:18px}
 .btn{
-margin-top:45px;
-padding:18px 42px;
-border-radius:50px;
-text-decoration:none;
-color:white;
-font-weight:700;
-background:linear-gradient(
-135deg,
-var(--purple),
-var(--blue)
-);
-transition:.35s;
-box-shadow:
-0 0 30px rgba(139,92,246,.4);
-}
-
-.btn:hover{
-transform:translateY(-4px);
-box-shadow:
-0 0 50px rgba(139,92,246,.8);
-}
-
-.section{
-padding:120px 10%;
-position:relative;
-z-index:2;
-}
-
-.section h2{
-text-align:center;
-font-size:48px;
-margin-bottom:25px;
-}
-
-.section p{
-text-align:center;
-max-width:900px;
-margin:auto;
-color:var(--gray);
-line-height:1.8;
-}
-
+margin-top:35px;padding:16px 40px;border-radius:999px;text-decoration:none;color:#fff;
+background:linear-gradient(135deg,var(--purple),var(--cyan));
+box-shadow:0 0 35px rgba(139,92,246,.4);transition:.3s}
+.btn:hover{transform:translateY(-5px)}
+.section{padding:120px 10%}
+.section h2{text-align:center;font-size:48px;margin-bottom:20px}
+.section p{text-align:center;color:var(--muted);max-width:800px;margin:auto}
 .cards{
-margin-top:60px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
+display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;margin-top:50px}
 .card{
-background:rgba(255,255,255,.03);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.08);
-padding:35px;
-border-radius:24px;
-transition:.4s;
-}
-
-.card:hover{
-transform:translateY(-12px);
-border-color:rgba(139,92,246,.5);
-box-shadow:
-0 20px 50px rgba(139,92,246,.15);
-}
-
-.card h3{
-margin-bottom:15px;
-font-size:24px;
-}
-
-.card p{
-text-align:left;
-}
-
-footer{
-padding:60px;
-text-align:center;
-color:var(--gray);
-border-top:1px solid rgba(255,255,255,.08);
-}
-#particles-js{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:0;
-}
-
-.hero,
-.section,
-footer{
-position:relative;
-z-index:2;
-}
+background:var(--glass);backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.08);padding:30px;border-radius:24px;
+transition:.35s;opacity:0;transform:translateY(40px)}
+.card.show{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-10px)}
+.card h3{margin-bottom:12px}
+.countdown{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:40px}
+.time{
+background:var(--glass);padding:25px;border-radius:20px;min-width:120px;
+text-align:center;border:1px solid rgba(255,255,255,.08)}
+.time span{font-size:40px;font-weight:800;display:block}
+footer{text-align:center;padding:50px;color:var(--muted)}
 </style>
 </head>
-
 <body>
 
 <div id="particles-js"></div>
+<div id="glow"></div>
 
 <section class="hero">
-<img src="logo.png" width="320" alt="ELVIAN Logo">
-<p class="tagline">
-Build. Innovate. Launch.
-</p>
-
-<p class="subtitle">
-A next-generation hackathon experience for students, builders, creators, designers and innovators in Greater Noida.
-</p>
-
-<a href="#" class="btn">Coming Soon</a>
-
+<img src="logo.png" class="logo" alt="ELVIAN">
+<h1 class="title">ELVIAN</h1>
+<div class="tag">Build. Innovate. Launch.</div>
+<p class="sub">A next-generation hackathon experience for students, builders, creators, designers and innovators.</p>
+<a href="#" class="btn">COMING SOON</a>
 </section>
 
 <section class="section">
-
-<h2>Not Just A Hackathon</h2>
-
-<p>
-ELVIAN combines innovation, networking, creativity and competition into one immersive experience designed for the next generation of builders.
-</p>
-
+<h2>Why ELVIAN?</h2>
+<p>More than a hackathon. A place where ideas become products, connections become opportunities, and builders come together.</p>
 <div class="cards">
-
-<div class="card">
-<h3>🏆 Cash Prizes</h3>
-<p>Compete for exciting rewards and recognition.</p>
+<div class="card"><h3>💡 Innovation</h3><p>Create bold ideas and transform them into reality.</p></div>
+<div class="card"><h3>🤝 Networking</h3><p>Meet students, creators and future founders.</p></div>
+<div class="card"><h3>🚀 Opportunities</h3><p>Showcase your skills and build something meaningful.</p></div>
 </div>
-
-<div class="card">
-<h3>🎮 Gaming Zone</h3>
-<p>PS5 gaming and fun break sessions throughout the event.</p>
-</div>
-
-<div class="card">
-<h3>🍕 Food & Refreshments</h3>
-<p>Stay energized while building and collaborating.</p>
-</div>
-
-<div class="card">
-<h3>📜 Certificates</h3>
-<p>Participation certificates for all attendees.</p>
-</div>
-
-</div>
-
 </section>
 
-<footer>
-ELVIAN © 2026
-</footer>
+<section class="section">
+<h2>Experience</h2>
+<div class="cards">
+<div class="card"><h3>🏆 Cash Prizes</h3></div>
+<div class="card"><h3>💻 Coding Challenges</h3></div>
+<div class="card"><h3>🎮 Gaming Zone</h3></div>
+<div class="card"><h3>🍕 Food & Refreshments</h3></div>
+<div class="card"><h3>📜 Certificates</h3></div>
+<div class="card"><h3>🎤 Speaker Sessions</h3></div>
+</div>
+</section>
+
+<section class="section">
+<h2>Something Big Is Coming</h2>
+<div class="countdown">
+<div class="time"><span id="d">00</span>Days</div>
+<div class="time"><span id="h">00</span>Hours</div>
+<div class="time"><span id="m">00</span>Minutes</div>
+<div class="time"><span id="s">00</span>Seconds</div>
+</div>
+</section>
+
+<footer>ELVIAN © 2026 • Built by Students. Powered by Innovation.</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-
 <script>
-tsParticles.load("particles-js", {
-  particles: {
-    number: {
-      value: 70
-    },
-    color: {
-      value: ["#8b5cf6", "#06b6d4"]
-    },
-    links: {
-      enable: true,
-      color: "#8b5cf6",
-      opacity: 0.2
-    },
-    move: {
-      enable: true,
-      speed: 1
-    },
-    size: {
-      value: 2
-    }
-  }
-});
-</script>
+tsParticles.load("particles-js",{particles:{number:{value:70},color:{value:["#8b5cf6","#06b6d4"]},links:{enable:true,color:"#8b5cf6",opacity:.2},move:{enable:true,speed:1},size:{value:2}}});
 
+const glow=document.getElementById('glow');
+document.addEventListener('mousemove',e=>{
+glow.style.left=e.clientX+'px';
+glow.style.top=e.clientY+'px';
+});
+
+const cards=document.querySelectorAll('.card');
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
+});
+cards.forEach(c=>obs.observe(c));
+
+const target=new Date("2027-01-01T00:00:00").getTime();
+setInterval(()=>{
+const now=new Date().getTime();
+const diff=target-now;
+document.getElementById('d').innerText=Math.max(0,Math.floor(diff/86400000));
+document.getElementById('h').innerText=Math.max(0,Math.floor(diff%86400000/3600000));
+document.getElementById('m').innerText=Math.max(0,Math.floor(diff%3600000/60000));
+document.getElementById('s').innerText=Math.max(0,Math.floor(diff%60000/1000));
+},1000);
+</script>
 </body>
 </html>
+
