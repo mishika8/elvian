@@ -126,16 +126,27 @@ entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
 });
 cards.forEach(c=>obs.observe(c));
 
-let hours = 336;
+const startHours = 336;
 
-document.getElementById("hours").innerText = hours;
+// store start time when page first loads
+let startTime = localStorage.getItem("elvianStartTime");
 
-setInterval(() => {
-  if (hours > 0) {
-    hours--;
-    document.getElementById("hours").innerText = hours;
-  }
-}, 3600000);
+if (!startTime) {
+  startTime = Date.now();
+  localStorage.setItem("elvianStartTime", startTime);
+}
+
+function updateCountdown() {
+  const now = Date.now();
+  const elapsedHours = (now - startTime) / (1000 * 60 * 60);
+
+  const remaining = Math.max(0, Math.floor(startHours - elapsedHours));
+
+  document.getElementById("hours").innerText = remaining;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>
