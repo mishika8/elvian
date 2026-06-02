@@ -84,7 +84,23 @@ padding:20px;
 position:relative;
 z-index:2;
 }
+.logo-img{
+    width:260px;
+    max-width:80%;
+    margin-bottom:20px;
+    animation:floatLogo 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 25px rgba(139,92,246,0.6));
+}
 
+@keyframes floatLogo{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
 .logo{
 font-size:clamp(70px,12vw,180px);
 font-weight:900;
@@ -213,9 +229,8 @@ border-top:1px solid rgba(255,255,255,.08);
 <section class="hero">
 
 <img src="logo.png" width="320" alt="ELVIAN Logo">
-<h1 class="logo">ELVIAN</h1>
 <p class="tagline">
-Build. Create. Connect.
+Build. Innovate. Launch.
 </p>
 
 <p class="subtitle">
