@@ -26,6 +26,7 @@ html{
 scroll-behavior:smooth;
 }
 
+   
 body{
 background:var(--bg);
 color:white;
@@ -220,14 +221,29 @@ text-align:center;
 color:var(--gray);
 border-top:1px solid rgba(255,255,255,.08);
 }
+#particles-js{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
 
+.hero,
+.section,
+footer{
+position:relative;
+z-index:2;
+}
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<div id="particles-js"></div>
 
+<section class="hero">
 <img src="logo.png" width="320" alt="ELVIAN Logo">
 <p class="tagline">
 Build. Innovate. Launch.
@@ -278,6 +294,33 @@ ELVIAN combines innovation, networking, creativity and competition into one imme
 <footer>
 ELVIAN © 2026
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<script>
+tsParticles.load("particles-js", {
+  particles: {
+    number: {
+      value: 70
+    },
+    color: {
+      value: ["#8b5cf6", "#06b6d4"]
+    },
+    links: {
+      enable: true,
+      color: "#8b5cf6",
+      opacity: 0.2
+    },
+    move: {
+      enable: true,
+      speed: 1
+    },
+    size: {
+      value: 2
+    }
+  }
+});
+</script>
 
 </body>
 </html>
